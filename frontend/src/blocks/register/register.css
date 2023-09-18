@@ -1,0 +1,9 @@
+.register {
+    width: 1280px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    position: relative;
+    align-items: flex-end;
+  }

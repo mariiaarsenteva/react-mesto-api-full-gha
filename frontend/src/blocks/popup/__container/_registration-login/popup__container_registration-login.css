@@ -1,0 +1,17 @@
+.popup__container_registration-login{
+    
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: auto;
+    padding: 60px 36px;
+    box-sizing: border-box;
+    align-items:center;
+    justify-content: space-between;
+}
+
+/* @media screen and (max-width: 767px) {
+    .popup__container_registration-login {
+  
+    }
+  } */

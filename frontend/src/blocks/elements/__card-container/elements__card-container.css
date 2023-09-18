@@ -1,0 +1,12 @@
+.elements__card-container {
+    border-radius: 10px;
+    background-color: #ffffff;
+    background-color: rgba(0, 0, 0, 1);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    max-width: 282px;
+    overflow: hidden;
+}

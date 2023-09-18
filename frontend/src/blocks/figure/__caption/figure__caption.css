@@ -1,0 +1,10 @@
+.figure__caption {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  line-height: 100%;
+  align-self: flex-start;
+  vertical-align: top;
+  color: white;
+  padding-top: 10px;
+}
