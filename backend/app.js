@@ -13,15 +13,9 @@ const router = express.Router();
 
 const { PORT, MONGODB_URL } = process.env; // переменные прописаны в .env
 
-// mongoose.connect(MONGODB_URL, {
-//   useUnifiedTopology: true,
-//   useNewUrlParser: true,
-// });
-
-mongoose.connect(MONGODB_URL);
-mongoose.connect("mongodb://127.0.0.1:27017/mestodb", {
-  useNewUrlParser: 'true',
-  useUnifiedTopology: 'true',
+mongoose.connect(MONGODB_URL, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
 });
 
 const app = express();
