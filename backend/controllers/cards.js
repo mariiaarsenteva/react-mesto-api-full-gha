@@ -6,10 +6,11 @@ const CardModel = require('../models/card');
 const BadRequestError = require('../errors/BadRequestError');
 const NotFoundError = require('../errors/NotFoundError');
 const ForbiddenError = require('../errors/ForbiddenError');
+const UnautorizedError = require('../errors/UnauthorizedError');
 
 const getCards = (req, res, next) => CardModel.find({})
   // .populate(['owner', 'likes'])
-  .then((cards) => res.status(HTTP_STATUS_OK).send(cards))
+  .then((cards) => res.status(HTTP_STATUS_OK).send(cards.reverse()))
   .catch(next);
 
 const deleteCard = (req, res, next) => {
@@ -36,7 +37,7 @@ const deleteCard = (req, res, next) => {
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.DocumentNotFoundError) {
-        next(new NotFoundError(`Карточка по данному _id: ${req.params.cardId} не найдена.`));
+        next(new UnautorizedError(`Карточка по данному _id: ${req.params.cardId} не найдена.`));
       } else {
         next(err);
       }
@@ -76,7 +77,7 @@ const dislikeCard = (req, res, next) => {
     .then((card) => res.status(HTTP_STATUS_OK).send(card))
     .catch((err) => {
       if (err instanceof mongoose.Error.CastError) {
-        next(new BadRequestError(`Некорректный _id карточки: ${req.params.cardId}`));
+        next(new UnautorizedError(`Некорректный _id карточки: ${req.params.cardId}`));
       } else if (err instanceof mongoose.Error.DocumentNotFoundError) {
         next(new NotFoundError(`Карточка по данному _id: ${req.params.cardId} не найдена.`));
       } else {
@@ -92,7 +93,7 @@ const likeCard = (req, res, next) => {
     .then((card) => res.status(HTTP_STATUS_OK).send(card))
     .catch((err) => {
       if (err instanceof mongoose.Error.CastError) {
-        next(new BadRequestError(`Некорректный _id карточки: ${req.params.cardId}`));
+        next(new UnautorizedError(`Некорректный _id карточки: ${req.params.cardId}`));
       } else if (err instanceof mongoose.Error.DocumentNotFoundError) {
         next(new NotFoundError(`Карточка по данному _id: ${req.params.cardId} не найдена.`));
       } else {
