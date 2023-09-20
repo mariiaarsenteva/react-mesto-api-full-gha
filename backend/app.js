@@ -16,7 +16,15 @@ const { PORT, MONGODB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 mongoose.connect(MONGODB_URL, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
-});
+})
+  .then(() => {
+    console.log('Database connected OK!');
+  });
+
+// mongoose.connect(...)
+//    .then(() => {
+//        console.log('Database connected OK!');
+//      });
 
 const app = express();
 
@@ -56,4 +64,6 @@ app.use((err, req, res, next) => {
 });
 
 app.timeout = 0;
-app.listen(PORT);
+app.listen(PORT, () => {
+  console.log(`Server is up & running, litening on port ${PORT}...`);
+});
