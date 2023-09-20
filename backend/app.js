@@ -1,23 +1,18 @@
 require('dotenv').config();
 
-const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
 const express = require('express');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const cors = require('cors');
+const rateLimit = require('express-rate-limit');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 // const axios = require('axios');
 
 // const router = express.Router();
 
 const { PORT = 3000, MONGODB_URL = 'mongodb://localhost:27017/mestodb' } = process.env; // переменные прописаны в .env
-
-mongoose.connect(MONGODB_URL, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-});
 
 const app = express();
 
@@ -31,7 +26,13 @@ const limiter = rateLimit({
 app.use(helmet());
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(router);
+
+mongoose.connect(MONGODB_URL, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+});
 
 app.use(requestLogger); // подключаем логгер запросов
 
@@ -55,12 +56,6 @@ app.use((err, req, res, next) => {
   });
   next();
 });
-
-// router.get('/crash-test', () => {
-//   setTimeout(() => {
-//     throw new Error('Сервер сейчас упадёт');
-//   }, 0);
-// });
 
 app.timeout = 0;
 app.listen(PORT);
