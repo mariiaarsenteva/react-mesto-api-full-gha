@@ -103,6 +103,7 @@ const login = (req, res, next) => {
 
 const getUser = (req, res, next) => {
   UserModel.findById(req.user._id)
+    .orFail()
     .then((users) => res.status(HTTP_STATUS_OK).send(users))
     .catch(next);
 };
