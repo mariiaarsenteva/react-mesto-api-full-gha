@@ -291,7 +291,7 @@ export default function App() {
               }
             />
             <Route
-              path="/sign-up"
+              path="/up"
               element={
                 <>
                   <Header name="signup" />
