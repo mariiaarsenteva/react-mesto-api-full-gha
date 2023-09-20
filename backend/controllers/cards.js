@@ -37,7 +37,7 @@ const deleteCard = (req, res, next) => {
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.DocumentNotFoundError) {
-        next(new Необходима авторизация(`Карточка по данному _id: ${req.params.cardId} не найдена.`));
+        next(new NotFoundError(`Карточка по данному _id: ${req.params.cardId} не найдена.`));
       } else {
         next(err);
       }
