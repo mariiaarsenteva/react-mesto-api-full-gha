@@ -9,28 +9,28 @@ class Api {
     return res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`)
   }
 
-  getInfo (token) {
+  getInfo () {
     return fetch(`${this._url}/users/me`, {
       headers: {
-        "Authorization" : `Bearer ${token}`
+        authorization: `Bearer ${localStorage.getItem("jwt")}`
       }
     }).then(this._checkResponse)
   }
 
-  getCards (token) {
+  getCards () {
     return fetch(`${this._url}/cards`, {
       headers: {
-        "Authorization" : `Bearer ${token}`
+        authorization: `Bearer ${localStorage.getItem("jwt")}`
       }
     }).then(this._checkResponse)
   }
 
-  setUserInfo (data, token) {
+  setUserInfo (data) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        "Authorization" : `Bearer ${token}`
+        authorization: `Bearer ${localStorage.getItem("jwt")}`
       },
       body: JSON.stringify({
         name: data.name,
@@ -39,12 +39,12 @@ class Api {
     }).then(this._checkResponse)
   }
 
-  setNewAvatar (data, token) {
+  setNewAvatar (data) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        "Authorization" : `Bearer ${token}`
+        authorization: `Bearer ${localStorage.getItem("jwt")}`
       },
       body: JSON.stringify({
         avatar: data.avatar
@@ -52,12 +52,12 @@ class Api {
     }).then(this._checkResponse)
   }
 
-  addCard (data, token) {
+  addCard (data) {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        "Authorization" : `Bearer ${token}`
+        authorization: `Bearer ${localStorage.getItem("jwt")}`
       },
       body: JSON.stringify({
         name: data.title,
@@ -88,11 +88,11 @@ class Api {
     }).then(this._checkResponse)
   }
 
-  removeCard (cardId, token) {
+  removeCard (cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
       headers: {
-        "Authorization" : `Bearer ${token}`
+        authorization: `Bearer ${localStorage.getItem("jwt")}`
       }
     }).then(this._checkResponse)
   }
@@ -102,8 +102,8 @@ class Api {
 const api = new Api({
   baseUrl: 'api.mariia.mesto.nomoredomainsrocks.ru',
   headers: {
-    authorization: '9b4e0602-94a6-4942-a0d1-e6cd14f0d357',
-    'Content-Type': 'application/json'
+    // authorization: '9b4e0602-94a6-4942-a0d1-e6cd14f0d357',
+    // 'Content-Type': 'application/json'
   }
 });
 
