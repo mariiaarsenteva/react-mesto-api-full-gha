@@ -12,7 +12,7 @@ class Api {
   getInfo () {
     return fetch(`${this._url}/users/me`, {
       headers: {
-        authorization: `Bearer ${localStorage.getItem("jwt")}`
+         authorization: `Bearer ${localStorage.getItem("jwt")}`
       }
     }).then(this._checkResponse)
   }
@@ -70,7 +70,7 @@ class Api {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'https://api.mariia.mesto.nomoredomainsrocks.ru',
+        'Content-Type': 'application/json',
         // "Authorization" : `Bearer ${token}`
         authorization: `Bearer ${localStorage.getItem("jwt")}`
       }
@@ -100,7 +100,7 @@ class Api {
 
 //создаем экземпляр класса Api
 const api = new Api({
-  baseUrl: 'api.mariia.mesto.nomoredomainsrocks.ru',
+  baseUrl: NODE_ENV === 'production' ? BASE_URL : 'http://localhost:3000',
   headers: {
     // authorization: '9b4e0602-94a6-4942-a0d1-e6cd14f0d357',
     // 'Content-Type': 'application/json'
