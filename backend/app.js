@@ -10,7 +10,7 @@ const cors = require('cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 // const axios = require('axios');
 
-const router = express.Router();
+// const router = express.Router();
 
 const { PORT = 3000, MONGODB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env; // переменные прописаны в .env
 
@@ -31,7 +31,7 @@ const limiter = rateLimit({
 app.use(helmet());
 
 app.use(bodyParser.json());
-app.use(router);
+// app.use(router);
 
 app.use(requestLogger); // подключаем логгер запросов
 
@@ -56,11 +56,11 @@ app.use((err, req, res, next) => {
   next();
 });
 
-router.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
+// router.get('/crash-test', () => {
+//   setTimeout(() => {
+//     throw new Error('Сервер сейчас упадёт');
+//   }, 0);
+// });
 
 app.timeout = 0;
 app.listen(PORT);

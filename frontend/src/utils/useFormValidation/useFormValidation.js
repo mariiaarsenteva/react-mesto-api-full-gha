@@ -5,7 +5,7 @@ export default function useFormValidation(){
 const [values, setValues] = useState({})
 const [errors, setErrors] = useState({})
 const [isValid, setIsValid] = useState(false)
-const [isInputValid, setIsInpuyValid] = useState({})
+const [isInputValid, setIsInputValid] = useState({})
 
 function handleChange(evt){
     
@@ -23,7 +23,7 @@ function handleChange(evt){
         return {...previousErrors, [name]: validationMessage} 
     })
 
-    setIsInpuyValid((previousInputValid)=>{
+    setIsInputValid((previousInputValid)=>{
         return {...previousInputValid, [name]: valid} 
     })
 
@@ -35,7 +35,7 @@ function reset(data ={}){
     setValues(data)
     setErrors({})
     setIsValid(false)
-    setIsInpuyValid({})
+    setIsInputValid({})
 }
 
 const setValue = useCallback((name, value) => {

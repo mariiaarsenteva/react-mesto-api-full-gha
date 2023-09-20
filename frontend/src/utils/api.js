@@ -70,7 +70,7 @@ class Api {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'https://api.mariia.mesto.nomoredomainsrocks.ru',
         // "Authorization" : `Bearer ${token}`
         authorization: `Bearer ${localStorage.getItem("jwt")}`
       }
