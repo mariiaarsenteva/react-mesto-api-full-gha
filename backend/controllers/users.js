@@ -12,6 +12,7 @@ const { SECRET_KEY = 'mesto' } = process.env;
 
 const getUsers = (req, res, next) => {
   UserModel.find({})
+    .orFail()
     .then((users) => res.status(HTTP_STATUS_OK).send(users))
     .catch(next);
 };
@@ -42,6 +43,7 @@ const addUser = (req, res, next) => {
     .then((hash) => UserModel.create({
       name, about, avatar, email, password: hash,
     })
+      .orFail()
       .then((user) => res.status(HTTP_STATUS_CREATED).send({
         name: user.name, about: user.about, avatar: user.avatar, email: user.email, _id: user.id,
       }))
@@ -96,6 +98,7 @@ const editUserAvatar = (req, res, next) => {
 const login = (req, res, next) => {
   const { email, password } = req.body;
   return UserModel.findUserByCredentials(email, password)
+    .orFail()
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, SECRET_KEY, { expiresIn: '7d' });
       res.send({ token });
@@ -107,6 +110,7 @@ const login = (req, res, next) => {
 
 const getUser = (req, res, next) => {
   UserModel.findById(req.user._id)
+    .orFail()
     .then((user) => res.status(HTTP_STATUS_OK).send(user))
     .catch(next);
 };
