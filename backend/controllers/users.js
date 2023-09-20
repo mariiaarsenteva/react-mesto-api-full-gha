@@ -103,7 +103,7 @@ const login = (req, res, next) => {
 
 const getUser = (req, res, next) => {
   UserModel.findById(req.user._id)
-    .orFail()
+    .orFail(new NotFoundError(`Пользователь по данному _id: ${req.params.userId} не найден.`))
     .then((users) => res.status(HTTP_STATUS_OK).send(users))
     .catch(next);
 };
