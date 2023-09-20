@@ -11,7 +11,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const router = express.Router();
 
-const { PORT, MONGODB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env; // переменные прописаны в .env
+const { PORT, MONGODB_URL } = process.env; // переменные прописаны в .env
 
 mongoose.connect(MONGODB_URL, {
   useUnifiedTopology: true,
