@@ -6,6 +6,7 @@ const UserModel = require('../models/user');
 const BadRequestError = require('../errors/BadRequestError');
 const NotFoundError = require('../errors/NotFoundError');
 const ConflictError = require('../errors/ConflictError');
+const UnauthorizedError = require('../errors/NotFoundError');
 
 const { SECRET_KEY = 'mesto' } = process.env;
 
@@ -19,7 +20,8 @@ const getUserById = (req, res, next) => {
   UserModel.findById(req.params.userId)
     .orFail()
     .then((user) => {
-      res.status(HTTP_STATUS_OK).send(user);
+      res.send(user);
+      // res.status(HTTP_STATUS_OK).send(user);
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.CastError) {
