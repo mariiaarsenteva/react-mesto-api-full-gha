@@ -6,7 +6,7 @@ const UserModel = require('../models/user');
 const BadRequestError = require('../errors/BadRequestError');
 const NotFoundError = require('../errors/NotFoundError');
 const ConflictError = require('../errors/ConflictError');
-const UnauthorizedError = require('../errors/NotFoundError');
+// const UnauthorizedError = require('../errors/NotFoundError');
 
 const { SECRET_KEY = 'mesto' } = process.env;
 
