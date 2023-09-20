@@ -8,6 +8,9 @@ const NotFoundError = require('../errors/NotFoundError');
 const ConflictError = require('../errors/ConflictError');
 
 const { SECRET_KEY } = process.env;
+const SECRET_KEY = process.env.NODE_ENV === 'production' ? process.env.SECRET_KEY : 'dev';
+// const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/bitfilmsdb';
+// const PORT = process.env.PORT || 3000;
 
 const getUsers = (req, res, next) => {
   UserModel.find({})

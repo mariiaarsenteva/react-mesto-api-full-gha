@@ -3,6 +3,11 @@ const UnauthorizedError = require('../errors/UnauthorizedError');
 
 const { SECRET_KEY } = process.env;
 
+const SECRET_KEY = process.env.NODE_ENV === 'production' ? process.env.SECRET_KEY : 'dev';
+const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/bitfilmsdb';
+const PORT = process.env.PORT || 3000;
+
+
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
 
