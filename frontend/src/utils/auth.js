@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:300';
+const baseUrl = 'http://localhost:3000';
 
 function getResData(res) {
   return res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`)
