@@ -11,7 +11,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const router = express.Router();
 
-const { PORT, MONGODB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env; // переменные прописаны в .env
+const { PORT = 3000, MONGODB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env; // переменные прописаны в .env
 
 mongoose.connect(MONGODB_URL, {
   useUnifiedTopology: true,
@@ -30,7 +30,7 @@ const limiter = rateLimit({
 app.use(helmet());
 
 app.use(bodyParser.json());
-app.use(router);
+// app.use(router);
 
 app.use(requestLogger); // подключаем логгер запросов
 
@@ -53,6 +53,12 @@ app.use((err, req, res, next) => {
       : message,
   });
   next();
+});
+
+router.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
 });
 
 app.timeout = 0;
