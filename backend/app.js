@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const cors = require('cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+// const axios = require('axios');
 
 const router = express.Router();
 
@@ -30,7 +31,7 @@ const limiter = rateLimit({
 app.use(helmet());
 
 app.use(bodyParser.json());
-// app.use(router);
+app.use(router);
 
 app.use(requestLogger); // подключаем логгер запросов
 
