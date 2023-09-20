@@ -6,7 +6,6 @@ const CardModel = require('../models/card');
 const BadRequestError = require('../errors/BadRequestError');
 const NotFoundError = require('../errors/NotFoundError');
 const ForbiddenError = require('../errors/ForbiddenError');
-const UnauthorizedError = require('../errors/UnauthorizedError');
 
 const getCards = (req, res, next) => CardModel.find({})
   // .populate(['owner', 'likes'])
@@ -27,9 +26,9 @@ const deleteCard = (req, res, next) => {
         })
         .catch((err) => {
           if (err instanceof mongoose.Error.CastError) {
-            next(new UnauthorizedError(`Некорректный _id карточки: ${req.params.cardId}`));
+            next(new BadRequestError(`Некорректный _id карточки: ${req.params.cardId}`));
           } else if (err instanceof mongoose.Error.DocumentNotFoundError) {
-            next(new UnauthorizedError(`Карточка по данному _id: ${req.params.cardId} не найдена.`));
+            next(new NotFoundError(`Карточка по данному _id: ${req.params.cardId} не найдена.`));
           } else {
             next(err);
           }
