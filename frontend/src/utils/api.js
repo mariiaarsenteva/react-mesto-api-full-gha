@@ -1,8 +1,8 @@
-import { baseUrl } from "./constants.js";
+import { BASE_URL } from "./constants.js";
 
 class Api {
-  constructor (options) {
-    this._url = options.baseUrl;
+  constructor ({baseUrl}) {
+    this._url = baseUrl;
     // this._headers = options.headers
     // this._authorization = options.headers.authorization
   }
@@ -102,7 +102,7 @@ class Api {
 
 //создаем экземпляр класса Api
 const api = new Api({
-  baseUrl: baseUrl,
+  baseUrl: BASE_URL,
   // headers: {
     // authorization: `Bearer ${localStorage.getItem('jwt')}`,
     // 'Content-Type': 'application/json'
