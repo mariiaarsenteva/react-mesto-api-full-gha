@@ -239,7 +239,7 @@ export default function App() {
     setIsSending(true);
     authorization(password, email)
       .then((res) => {
-        // localStorage.setItem("jwt", res.token);
+        localStorage.setItem("jwt", res.token);
         setLoggedIn(true);
         window.scrollTo(0, 0);
         navigate("/");
