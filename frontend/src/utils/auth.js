@@ -1,4 +1,4 @@
-const baseUrl = 'https://api.mariia.mesto.nomoredomainsrocks.ru'
+const baseUrl = 'https://api.mariia.mesto.nomoredomainsrocks.ru/'
 
 function getResData(res) {
   return res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`)
@@ -33,7 +33,7 @@ export function authorization(password, email) {
 }
 
 export function getUserData(token) {
-  return fetch(`${baseUrl}/users/me`, {
+  return fetch(`${baseUrl}users/me`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
