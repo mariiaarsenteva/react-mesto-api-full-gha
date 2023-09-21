@@ -3,7 +3,7 @@ import { baseUrl } from "./constants.js";
 class Api {
   constructor (options) {
     this._url = options.baseUrl;
-    this._headers = options.headers
+    // this._headers = options.headers
     // this._authorization = options.headers.authorization
   }
 
@@ -104,7 +104,7 @@ class Api {
 const api = new Api({
   baseUrl: baseUrl,
   headers: {
-    authorization: `Bearer ${localStorage.getItem('jwt')}`,
+    // authorization: `Bearer ${localStorage.getItem('jwt')}`,
     'Content-Type': 'application/json'
   }
 });
