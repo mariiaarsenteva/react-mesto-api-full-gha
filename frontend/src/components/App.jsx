@@ -291,7 +291,7 @@ export default function App() {
               }
             />
             <Route
-              path="/sign-up"
+              path="/signup"
               element={
                 <>
                   <Header name="signup" />
@@ -300,7 +300,7 @@ export default function App() {
               }
             />
             <Route
-              path="/sign-in"
+              path="/signin"
               element={
                 <>
                   <Header name="signin" />
