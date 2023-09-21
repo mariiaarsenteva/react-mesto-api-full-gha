@@ -8,7 +8,7 @@ const NotFoundError = require('../errors/NotFoundError');
 const ConflictError = require('../errors/ConflictError');
 // const UnauthorizedError = require('../errors/NotFoundError');
 
-const { SECRET_KEY = 'mesto' } = process.env;
+const { SECRET_KEY } = process.env;
 
 const getUsers = (req, res, next) => {
   UserModel.find({})
