@@ -1,11 +1,11 @@
-const baseUrl = 'api.mariia.mesto.nomoredomainsrocks.ru';
+const baseUrl = 'https://api.mariia.mesto.nomoredomainsrocks.ru'
 
 function getResData(res) {
   return res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`)
 }
 
 export function registration(password, email) {
-  return fetch(`${baseUrl}/signup`, {
+  return fetch(`${baseUrl}/sign-up`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ export function registration(password, email) {
 }
 
 export function authorization(password, email) {
-  return fetch(`${baseUrl}/signin`, {
+  return fetch(`${baseUrl}/sign-in`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

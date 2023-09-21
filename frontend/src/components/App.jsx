@@ -257,7 +257,7 @@ export default function App() {
       .then(() => {
         setIsSuccessful(true);
         window.scrollTo(0, 0);
-        navigate("/signin");
+        navigate("/sign-in");
       })
       .catch((error) => {
         setIsError(true);
@@ -291,7 +291,7 @@ export default function App() {
               }
             />
             <Route
-              path="/signup"
+              path="/sign-up"
               element={
                 <>
                   <Header name="signup" />
@@ -300,7 +300,7 @@ export default function App() {
               }
             />
             <Route
-              path="/signin"
+              path="/sign-in"
               element={
                 <>
                   <Header name="signin" />

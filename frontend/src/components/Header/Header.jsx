@@ -40,14 +40,14 @@ useEffect(() => {
     alt="Лого Место"
     />
     {name === 'signup' || name === 'signin' ?
-    <Link to={name === 'signup' ? '/signin' : '/signup'} className='header__link'>
+    <Link to={name === 'signup' ? '/sign-in' : '/sign-up'} className='header__link'>
     {name !== 'signup' ? 'Регистрация' : 'Войти'}
     </Link>
     :
     <>
     <div className={`header__email-container ${count !== false ? 'header__email-container_opened' : ''}`}>
         <p className='header__email'>{dataUser}</p>
-        <Link to={`/signin`} className='header__logout' onClick={onSignOut}>Выйти</Link>
+        <Link to={`/sign-in`} className='header__logout' onClick={onSignOut}>Выйти</Link>
     </div>
     <button className={`header__button ${count !== false ? 'header__button_active' : ''}`} onClick={handelClick}></button>
     </>

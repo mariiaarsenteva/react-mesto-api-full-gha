@@ -12,8 +12,8 @@ router.get('/crash-test', () => {
   }, 0);
 });
 
-router.use('/signup', signupRouter);
-router.use('/signin', signinRouter);
+router.use('/sign-up', signupRouter);
+router.use('/sign-in', signinRouter);
 router.use(auth);
 router.use('/users', usersRouter);
 router.use('/cards', cardsRouter);
