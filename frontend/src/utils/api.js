@@ -1,7 +1,9 @@
+import { baseUrl } from "./constants";
+
 class Api {
   constructor (options) {
     this._url = options.baseUrl;
-    // this._headers = options.headers
+    this._headers = options.headers
     // this._authorization = options.headers.authorization
   }
 
@@ -100,9 +102,9 @@ class Api {
 
 //создаем экземпляр класса Api
 const api = new Api({
-  baseUrl: 'https://api.mariia.mesto.nomoredomainsrocks.ru',
+  baseUrl: baseUrl,
   headers: {
-    // authorization: '9b4e0602-94a6-4942-a0d1-e6cd14f0d357',
+    authorization: `Bearer ${localStorage.getItem('jwt')}`,
     'Content-Type': 'application/json'
   }
 });

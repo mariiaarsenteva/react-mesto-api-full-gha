@@ -1,13 +1,14 @@
-const baseUrl = 'https://api.mariia.mesto.nomoredomainsrocks.ru/'
+import { baseUrl } from "./constants";
 
 function getResData(res) {
   return res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`)
 }
 
 export function registration(password, email) {
-  return fetch(`${baseUrl}signup`, {
+  return fetch(`${baseUrl}/signup`, {
     method: 'POST',
     headers: {
+      Accept: 'application/json',
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
@@ -18,11 +19,13 @@ export function registration(password, email) {
   .then(res => getResData(res))
 }
 
-export function authorization(password, email) {
-  return fetch(`${baseUrl}signin`, {
+export function authorization(password, email, token) {
+  return fetch(`${baseUrl}/signin`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      "Authorization" : `Bearer ${token}`
     },
     body: JSON.stringify({
       password: password,
@@ -33,9 +36,10 @@ export function authorization(password, email) {
 }
 
 export function getUserData(token) {
-  return fetch(`${baseUrl}users/me`, {
+  return fetch(`${baseUrl}/users/me`, {
     method: 'GET',
     headers: {
+      Accept: 'application/json',
       'Content-Type': 'application/json',
       "Authorization" : `Bearer ${token}`
     }})
