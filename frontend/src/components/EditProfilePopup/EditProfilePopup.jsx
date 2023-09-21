@@ -13,7 +13,9 @@ export default function EditProfilePopup({isOpen, onClose, onUpdateUser, isSend}
 useEffect(()=>{
     setValue('name', currentUser.name)
     setValue('job', currentUser.about)
-},[currentUser,isOpen])
+},
+// eslint-disable-next-line
+[currentUser,isOpen])
 
 
 function resetClose(){
