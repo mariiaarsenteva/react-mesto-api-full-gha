@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
@@ -9,7 +7,7 @@ const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 // const axios = require('axios');
-
+require('dotenv').config();
 // const router = express.Router();
 
 const { PORT = 3000, MONGODB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env; // переменные прописаны в .env
