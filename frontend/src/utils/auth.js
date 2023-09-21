@@ -5,7 +5,7 @@ function getResData(res) {
 }
 
 export function registration(password, email) {
-  return fetch(`${baseUrl}/signup`, {
+  return fetch(`${baseUrl}signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ export function registration(password, email) {
 }
 
 export function authorization(password, email) {
-  return fetch(`${baseUrl}/signin`, {
+  return fetch(`${baseUrl}signin`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
