@@ -14,7 +14,7 @@ export default function AuthPage({ name, children, isValid, onSubmit }) {
         isValid={isValid}
         onSubmit={onSubmit}
       />
-      {name === 'signup' && <p className="login__subtitle">Уже зарегистрированы? <Link to={'/sing-in'} className='login__subtitle-link'>Войти</Link></p>}
+      {name === 'signup' && <p className="login__subtitle">Уже зарегистрированы? <Link to={'/singin'} className='login__subtitle-link'>Войти</Link></p>}
     </section>
   )
 }

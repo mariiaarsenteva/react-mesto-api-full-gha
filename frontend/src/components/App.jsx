@@ -257,7 +257,7 @@ export default function App() {
       .then(() => {
         setIsSuccessful(true);
         window.scrollTo(0, 0);
-        navigate("/sign-in");
+        navigate("/signin");
       })
       .catch((error) => {
         setIsError(true);
