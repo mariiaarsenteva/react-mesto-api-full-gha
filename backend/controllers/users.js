@@ -76,7 +76,7 @@ const editUserData = (req, res, next) => {
 
 const editUserAvatar = (req, res, next) => {
   UserModel.findByIdAndUpdate(req.user._id, { avatar: req.body.avatar }, { new: 'true', runValidators: true })
-    .orFail()
+
     .then((user) => res.status(HTTP_STATUS_OK).send(user))
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
@@ -103,6 +103,7 @@ const login = (req, res, next) => {
 
 const getUser = (req, res, next) => {
   UserModel.findById(req.user._id)
+    .orFail()
     .then((users) => res.status(HTTP_STATUS_OK).send(users))
     .catch(next);
 };
