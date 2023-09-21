@@ -100,7 +100,7 @@ class Api {
 
 //создаем экземпляр класса Api
 const api = new Api({
-  baseUrl: NODE_ENV === 'production' ? BASE_URL : 'http://localhost:3000',
+  baseUrl: 'api.mariia.mesto.nomoredomainsrocks.ru',
   headers: {
     // authorization: '9b4e0602-94a6-4942-a0d1-e6cd14f0d357',
     // 'Content-Type': 'application/json'
