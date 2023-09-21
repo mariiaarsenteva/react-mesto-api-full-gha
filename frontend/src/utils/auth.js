@@ -1,4 +1,5 @@
-const baseUrl = 'https://api.mariia.mesto.nomoredomainsrocks.ru'
+// const baseUrl = 'https://api.mariia.mesto.nomoredomainsrocks.ru'
+import { baseUrl } from "./constants.js";
 
 function getResData(res) {
   return res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`)
